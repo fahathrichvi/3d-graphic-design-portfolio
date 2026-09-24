@@ -31,10 +31,10 @@
 
   renderer.setPixelRatio(DPR);
   renderer.setSize(innerWidth, innerHeight);
-  renderer.setClearColor(0x04050b, 1);
+  renderer.setClearColor(0x020308, 1);
 
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x04050b, 0.011);
+  scene.fog = new THREE.FogExp2(0x020308, 0.013);
   const camera = new THREE.PerspectiveCamera(mobile ? 62 : 50, innerWidth / innerHeight, 0.1, 600);
 
   /* ---------- palette ---------- */
@@ -81,7 +81,7 @@
     const g = new THREE.BufferGeometry();
     g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
     g.setAttribute('color', new THREE.BufferAttribute(col, 3));
-    const stars = new THREE.Points(g, pointsMat(1.1, 0.85));
+    const stars = new THREE.Points(g, pointsMat(1.0, 0.7));
     stars.material.fog = false;
     stars.name = 'stars';
     scene.add(stars);
@@ -127,13 +127,13 @@
     const g = new THREE.BufferGeometry();
     g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
     g.setAttribute('color', new THREE.BufferAttribute(col, 3));
-    helix.add(new THREE.Points(g, pointsMat(0.3, 0.85)));
+    helix.add(new THREE.Points(g, pointsMat(0.28, 0.7)));
 
     const rg = new THREE.BufferGeometry();
     rg.setAttribute('position', new THREE.Float32BufferAttribute(rungPos, 3));
     rg.setAttribute('color', new THREE.Float32BufferAttribute(rungCol, 3));
     helix.add(new THREE.LineSegments(rg, new THREE.LineBasicMaterial({
-      vertexColors: true, transparent: true, opacity: 0.45, blending: THREE.AdditiveBlending, depthWrite: false,
+      vertexColors: true, transparent: true, opacity: 0.28, blending: THREE.AdditiveBlending, depthWrite: false,
     })));
 
     const bg = new THREE.BufferGeometry();
@@ -149,7 +149,7 @@
     const W = 1024, H = 180, c = document.createElement('canvas');
     c.width = W; c.height = H;
     const g = c.getContext('2d');
-    g.fillStyle = 'rgba(12,10,24,0.85)'; g.fillRect(0, 0, W, H);
+    g.clearRect(0, 0, W, H);
     // edges
     g.fillStyle = 'rgba(255,220,170,0.9)';
     g.fillRect(0, 0, W, 3); g.fillRect(0, H - 3, W, 3);
@@ -211,8 +211,8 @@
 
   const ribbons = new THREE.Group();
   scene.add(ribbons);
-  const ribbonA = makeRibbon({ radius: 10, twist: 0.2, phase: 0, width: 2.1, hues: [30, 330, 190, 45], opacity: 0.5 });
-  const ribbonB = makeRibbon({ radius: 14, twist: -0.13, phase: 2, width: 1.5, hues: [190, 280, 20, 320], opacity: 0.32 });
+  const ribbonA = makeRibbon({ radius: 10, twist: 0.2, phase: 0, width: 2.1, hues: [30, 330, 190, 45], opacity: 0.34 });
+  const ribbonB = makeRibbon({ radius: 14, twist: -0.13, phase: 2, width: 1.5, hues: [190, 280, 20, 320], opacity: 0.2 });
   ribbons.add(ribbonA, ribbonB);
 
   /* ---------- neon light trails ---------- */
@@ -231,7 +231,7 @@
     g.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
     g.setAttribute('color', new THREE.Float32BufferAttribute(cols, 3));
     trails.add(new THREE.Line(g, new THREE.LineBasicMaterial({
-      vertexColors: true, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending, depthWrite: false,
+      vertexColors: true, transparent: true, opacity: 0.45, blending: THREE.AdditiveBlending, depthWrite: false,
     })));
   });
 
@@ -241,7 +241,7 @@
    [-40, 17, '#8b5cf6'], [-85, 15, '#34e1ff'], [-120, 18, '#ff8a2b']].forEach(([y, r, col], i) => {
     const m = new THREE.Mesh(
       new THREE.TorusGeometry(r, 0.05, 8, 200, Math.PI * rand(1.2, 1.8)),
-      new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.9, blending: THREE.AdditiveBlending, depthWrite: false })
+      new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.55, blending: THREE.AdditiveBlending, depthWrite: false })
     );
     m.position.y = y;
     m.rotation.x = Math.PI / 2 + rand(-0.25, 0.25);
@@ -257,7 +257,7 @@
     c.width = W; c.height = H;
     const g = c.getContext('2d');
     const col = `hsla(${hue},100%,65%,`;
-    g.fillStyle = col + '0.08)'; g.fillRect(0, 0, W, H);
+    g.fillStyle = col + '0.03)'; g.fillRect(0, 0, W, H);
     g.strokeStyle = col + '0.9)'; g.lineWidth = 3; g.strokeRect(2, 2, W - 4, H - 4);
     g.fillStyle = col + '0.9)'; g.fillRect(14, 14, 70, 6); g.fillRect(14, 26, 40, 4);
     g.strokeStyle = col + '0.8)'; g.fillStyle = col + '0.75)'; g.lineWidth = 2;
@@ -304,7 +304,7 @@
     const g = new THREE.BufferGeometry();
     g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
     g.setAttribute('color', new THREE.BufferAttribute(col, 3));
-    const p = new THREE.Points(g, pointsMat(0.55, 0.7));
+    const p = new THREE.Points(g, pointsMat(0.35, 0.3));
     scene.add(p);
     return p;
   })();
@@ -395,7 +395,7 @@
   composer.setPixelRatio(Math.min(DPR, 1.25));
   composer.setSize(innerWidth, innerHeight);
   composer.addPass(new RenderPass(scene, camera));
-  const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), mobile ? 0.7 : 0.8, 0.5, 0.2);
+  const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), mobile ? 0.6 : 0.75, 0.35, 0.5);
   composer.addPass(bloom);
   composer.addPass(new OutputPass());
 
@@ -426,7 +426,7 @@
     camera.position.set(Math.sin(a) * dist, y, Math.cos(a) * dist);
 
     // shift the helix to the right of the screen on desktop (text sits on the left)
-    const side = wide ? 7.5 * (1 - end) : 0;
+    const side = wide ? 10 * (1 - end) : 0;
     const rx = Math.cos(a), rz = -Math.sin(a);
     target.set(-rx * side, THREE.MathUtils.lerp(y - 3, BH_Y + 1.5, end), -rz * side);
     camera.lookAt(target);
@@ -467,7 +467,7 @@
     halos.forEach((h) => { h.rotation.z += dt * h.userData.speed; });
     panels.forEach((m) => {
       m.position.y = m.userData.baseY + Math.sin(t * 0.8 + m.userData.phase) * 0.6;
-      m.material.opacity = 0.45 + Math.sin(t * 1.5 + m.userData.phase) * 0.2;
+      m.material.opacity = 0.3 + Math.sin(t * 1.5 + m.userData.phase) * 0.15;
     });
 
     diskMat.uniforms.uTime.value = t;

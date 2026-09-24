@@ -4,7 +4,7 @@
    ========================================================= */
 
 :root {
-  --bg: #04050b;
+  --bg: #020308;
   --bg-2: #0a0c18;
   --surface: rgba(255, 255, 255, 0.035);
   --surface-2: rgba(255, 255, 255, 0.06);
@@ -71,11 +71,11 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .vignette {
   position: fixed; inset: 0; z-index: 1; pointer-events: none;
   background:
-    radial-gradient(120% 90% at 50% 40%, transparent 45%, rgba(4, 5, 11, .75) 100%),
-    linear-gradient(90deg, rgba(4, 5, 11, .7) 0%, rgba(4, 5, 11, .35) 45%, rgba(4, 5, 11, 0) 65%);
+    radial-gradient(120% 90% at 50% 40%, transparent 35%, rgba(1, 2, 6, .95) 100%),
+    linear-gradient(90deg, rgba(1, 2, 6, .85) 0%, rgba(1, 2, 6, .6) 40%, rgba(1, 2, 6, .15) 65%, rgba(1, 2, 6, .15) 100%);
 }
 .noise {
-  position: fixed; inset: -50%; z-index: 2; pointer-events: none; opacity: .05;
+  position: fixed; inset: -50%; z-index: 2; pointer-events: none; opacity: .035; mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   animation: grain 8s steps(10) infinite;
 }
@@ -128,7 +128,7 @@ main, .footer, .nav { position: relative; z-index: 3; }
 
 /* ---------- Common ---------- */
 .glass {
-  background: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02)), rgba(8, 9, 20, .55);
+  background: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02)), rgba(4, 5, 12, .8);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   backdrop-filter: blur(16px) saturate(140%);
@@ -179,7 +179,7 @@ main, .footer, .nav { position: relative; z-index: 3; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tags li {
   font-size: 12px; padding: 5px 12px; border-radius: 999px;
-  border: 1px solid var(--line); background: rgba(255, 255, 255, .03); color: #c7cdea;
+  border: 1px solid var(--line); background: rgba(6, 7, 16, .75); color: #d4d9f2;
 }
 .tags--lg li { font-size: 13px; padding: 8px 16px; }
 
@@ -188,6 +188,13 @@ main, .footer, .nav { position: relative; z-index: 3; }
 .section__head.center { text-align: center; margin-inline: auto; }
 .section__head--row { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; max-width: none; flex-wrap: wrap; }
 .section__head--row > div:first-child { max-width: 640px; }
+
+/* Readability: soft dark halo behind text that sits over the 3D scene */
+.h2, .hero__title, .eyebrow, .lead, .hero__lead, .hero__status, .contact__list, .skills h3, .scroll-hint {
+  text-shadow: 0 0 18px rgba(1, 2, 6, .95), 0 2px 30px rgba(1, 2, 6, .9);
+}
+.h2 em, .hero__title em { text-shadow: none; filter: drop-shadow(0 0 14px rgba(1, 2, 6, .9)); }
+.lead, .hero__lead { color: #b3bbdc; }
 
 /* Reveal */
 [data-reveal] { opacity: 0; transform: translateY(40px); transition: opacity 1s var(--ease), transform 1s var(--ease); transition-delay: var(--d, 0s); }
@@ -525,7 +532,7 @@ main, .footer, .nav { position: relative; z-index: 3; }
   .float-card { position: relative; inset: auto; min-width: 0; animation: none; }
   .fc-3 { grid-column: span 2; }
   .fc-3 ul { display: grid; grid-template-columns: 1fr 1fr; }
-  .vignette { background: radial-gradient(120% 90% at 50% 40%, transparent 30%, rgba(4, 5, 11, .8) 100%), rgba(4, 5, 11, .35); }
+  .vignette { background: radial-gradient(120% 90% at 50% 40%, transparent 30%, rgba(1, 2, 6, .9) 100%), rgba(1, 2, 6, .6); }
 
   .timeline::before { left: 9px; }
   .tl, .tl:nth-child(even) { width: 100%; margin-left: 0; padding: 0 0 36px 44px; }
