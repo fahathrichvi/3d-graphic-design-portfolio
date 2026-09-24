@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fahath — Graphic Designer & 3D Artist</title>
+  <meta name="description" content="Fahath — Graphic Designer & 3D Artist based in Doha, Qatar. Branding, print, 3D signage, motion and apparel design." />
+  <meta name="theme-color" content="#04050b" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800&family=Manrope:wght@300;400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Three.js (loaded from CDN via import map) -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <!-- ============ LOADER ============ -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__orb">
+      <span class="loader__ring r1"></span>
+      <span class="loader__ring r2"></span>
+      <span class="loader__ring r3"></span>
+      <span class="loader__mark">F</span>
+    </div>
+    <div class="loader__text">
+      <span class="loader__name">FAHATH</span>
+      <span class="loader__pct"><span id="loaderPct">0</span>%</span>
+    </div>
+  </div>
+
+  <!-- ============ 3D BACKGROUND ============ -->
+  <canvas id="bg3d" aria-hidden="true"></canvas>
+  <div class="bg-fallback" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- cursor -->
+  <div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"></span></div>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a href="#home" class="nav__logo" aria-label="Fahath — home">
+      <span class="logo-mark">
+        <svg viewBox="0 0 40 40" fill="none"><path d="M20 2 36 11v18L20 38 4 29V11L20 2Z" stroke="url(#lg)" stroke-width="1.6"/><path d="M15 12h11M15 12v16M15 20h8" stroke="url(#lg)" stroke-width="2.4" stroke-linecap="round"/><defs><linearGradient id="lg" x1="0" y1="0" x2="40" y2="40"><stop stop-color="#ffc978"/><stop offset=".5" stop-color="#ff3fa4"/><stop offset="1" stop-color="#34e1ff"/></linearGradient></defs></svg>
+      </span>
+      <span class="logo-text">FAHATH<small>Graphic Designer</small></span>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Main">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#journey">Journey</a>
+      <a href="#tools">Tools</a>
+      <a href="#contact" class="nav__cta-mobile">Contact</a>
+    </nav>
+
+    <a href="#contact" class="btn btn--ghost nav__cta magnetic">Let's Connect
+      <svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg>
+    </a>
+    <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="eyebrow" data-reveal><span class="bar"></span>Graphic Designer · 3D Artist · Motion<span class="bar"></span></p>
+
+          <h1 class="hero__title" data-reveal>
+            I design visuals<br />
+            that <em class="rotator" id="rotator"><span>move</span></em><br />
+            the world.
+          </h1>
+
+          <p class="hero__lead" data-reveal>
+            Hi, I'm <strong>Fahath</strong> — a creative designer from Sri Lanka, based in Doha, Qatar.
+            I turn ideas into brands, print, 3D signage and motion that people stop to look at.
+          </p>
+
+          <div class="hero__actions" data-reveal>
+            <a href="#work" class="btn btn--primary magnetic">View My Work
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="assets/Fahath-CV.pdf" class="btn btn--ghost magnetic" download>Download CV
+              <svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+            </a>
+          </div>
+
+          <div class="hero__status" data-reveal>
+            <span class="pulse"></span>
+            <div><strong>Available for projects</strong><small>Let's build something exceptional.</small></div>
+          </div>
+        </div>
+
+        <aside class="hero__cards">
+          <div class="glass float-card fc-1 tilt" data-reveal>
+            <small>Experience</small>
+            <strong><span data-count="8">0</span>+ Years</strong>
+            <p>creating brands &amp; visuals</p>
+          </div>
+          <div class="glass float-card fc-2 tilt" data-reveal>
+            <small>Currently at</small>
+            <strong class="sm">Inkfinity Advertising</strong>
+            <p>Doha · Qatar</p>
+          </div>
+          <div class="glass float-card fc-3 tilt" data-reveal>
+            <small>Focus areas</small>
+            <ul>
+              <li>Brand Identity</li>
+              <li>Print &amp; Signage</li>
+              <li>3D Visualisation</li>
+              <li>Motion &amp; Video</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+
+      <a href="#about" class="scroll-hint" aria-label="Scroll down">
+        <span class="mouse"><span></span></span>
+        <small>Scroll to travel the spiral</small>
+      </a>
+    </section>
+
+    <!-- ============ FILM MARQUEE ============ -->
+    <div class="film" aria-hidden="true">
+      <div class="film__track">
+        <span>Logo Design</span><span>Brochures</span><span>Roll Ups</span><span>3D Signage</span><span>Acrylic &amp; CNC</span><span>Vehicle Branding</span><span>Embroidery</span><span>Social Media</span><span>Motion Graphics</span><span>3D Interiors</span>
+        <span>Logo Design</span><span>Brochures</span><span>Roll Ups</span><span>3D Signage</span><span>Acrylic &amp; CNC</span><span>Vehicle Branding</span><span>Embroidery</span><span>Social Media</span><span>Motion Graphics</span><span>3D Interiors</span>
+      </div>
+    </div>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section about" id="about">
+      <div class="container about__grid">
+        <div class="about__visual" data-reveal>
+          <div class="portrait">
+            <span class="portrait__ring pr-1"></span>
+            <span class="portrait__ring pr-2"></span>
+            <span class="portrait__ring pr-3"></span>
+            <div class="portrait__img">
+              <!-- Put your photo at assets/profile.jpg -->
+              <img src="assets/profile.jpg" alt="Portrait of Fahath" onerror="this.remove()" />
+              <span class="portrait__fallback">F</span>
+            </div>
+            <span class="portrait__chip chip-a glass">Illustrator</span>
+            <span class="portrait__chip chip-b glass">Blender</span>
+            <span class="portrait__chip chip-c glass">Photoshop</span>
+          </div>
+        </div>
+
+        <div class="about__content">
+          <p class="eyebrow" data-reveal><span class="bar"></span>About me</p>
+          <h2 class="h2" data-reveal>Creativity with a <em>team-first</em> mindset.</h2>
+          <p class="lead" data-reveal>
+            Highly creative, with the ability to work well within a team. I have extensive experience
+            managing other designers and coordinating with them to deliver a single, polished product —
+            from the first sketch to the printed banner, the CNC-cut acrylic sign or the final video edit.
+          </p>
+
+          <div class="about__stats" data-reveal>
+            <div class="stat"><strong><span data-count="5">0</span></strong><small>Studios &amp; agencies</small></div>
+            <div class="stat"><strong><span data-count="9">0</span></strong><small>Pro design tools</small></div>
+            <div class="stat"><strong><span data-count="4">0</span></strong><small>Languages spoken</small></div>
+          </div>
+
+          <div class="about__cols">
+            <div class="glass panel" data-reveal>
+              <h3 class="panel__title"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>Education</h3>
+              <div class="edu">
+                <span class="edu__year">2018</span>
+                <div><strong>Diploma in Graphic Designing</strong><small>ECN College — TVEC Approved</small></div>
+              </div>
+              <div class="edu">
+                <span class="edu__year">2017</span>
+                <div><strong>Diploma in Computer Science</strong><small>KDMC Nenasala — TVEC &amp; Foreign Ministry Approved</small></div>
+              </div>
+            </div>
+
+            <div class="glass panel" data-reveal>
+              <h3 class="panel__title"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>Languages</h3>
+              <div class="lang"><span>Tamil</span><i style="--w:100%"></i></div>
+              <div class="lang"><span>English</span><i style="--w:75%"></i></div>
+              <div class="lang"><span>Hindi</span><i style="--w:27%"></i></div>
+              <div class="lang"><span>Arabic</span><i style="--w:13%"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow" data-reveal><span class="bar"></span>Services</p>
+          <h2 class="h2" data-reveal>End-to-end design, <em>from pixel to print.</em></h2>
+          <p class="lead" data-reveal>Everything a brand needs to look sharp — on screen, on paper, on vehicles and on the wall.</p>
+        </div>
+
+        <div class="services__grid">
+          <article class="svc glass tilt" data-reveal style="--c1:#ffc978;--c2:#ff8a2b">
+            <span class="svc__num">01</span>
+            <div class="svc__icon"><svg viewBox="0 0 24 24"><path d="m12 3 2.5 5 5.5.8-4 3.9.9 5.5L12 15.6 7.1 18.2l.9-5.5-4-3.9 5.5-.8L12 3Z"/></svg></div>
+            <h3>Brand Identity</h3>
+            <p>Logos, business cards and branding stickers that give a business a face people remember.</p>
+            <ul class="tags"><li>Logo</li><li>Business Cards</li><li>Stickers</li></ul>
+          </article>
+
+          <article class="svc glass tilt" data-reveal style="--c1:#ff8a2b;--c2:#ff3fa4">
+            <span class="svc__num">02</span>
+            <div class="svc__icon"><svg viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg></div>
+            <h3>Print &amp; Large Format</h3>
+            <p>Brochures, flyers, banners, roll-ups and vehicle graphics — prepared press-ready, and printed in-house.</p>
+            <ul class="tags"><li>Brochure</li><li>Roll Up</li><li>Vehicle Wrap</li></ul>
+          </article>
+
+          <article class="svc glass tilt" data-reveal style="--c1:#ff3fa4;--c2:#8b5cf6">
+            <span class="svc__num">03</span>
+            <div class="svc__icon"><svg viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5M12 12v10"/></svg></div>
+            <h3>3D Signage &amp; Fabrication</h3>
+            <p>3D signage, acrylic works and CNC-ready files — designed to be built, not just rendered.</p>
+            <ul class="tags"><li>3D Signage</li><li>Acrylic</li><li>CNC</li></ul>
+          </article>
+
+          <article class="svc glass tilt" data-reveal style="--c1:#8b5cf6;--c2:#34e1ff">
+            <span class="svc__num">04</span>
+            <div class="svc__icon"><svg viewBox="0 0 24 24"><path d="M3 21V10l9-7 9 7v11"/><path d="M9 21v-6h6v6"/></svg></div>
+            <h3>3D Modelling &amp; Interiors</h3>
+            <p>3D models, interior mockups and technical drawings in Blender, SketchUp and AutoCAD.</p>
+            <ul class="tags"><li>Blender</li><li>SketchUp</li><li>AutoCAD</li></ul>
+          </article>
+
+          <article class="svc glass tilt" data-reveal style="--c1:#34e1ff;--c2:#3d7bff">
+            <span class="svc__num">05</span>
+            <div class="svc__icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="m17 10 5-3v10l-5-3"/></svg></div>
+            <h3>Motion &amp; Video</h3>
+            <p>Video animation, editing and social reels with Premiere Pro and After Effects.</p>
+            <ul class="tags"><li>Animation</li><li>Editing</li><li>Reels</li></ul>
+          </article>
+
+          <article class="svc glass tilt" data-reveal style="--c1:#ffc978;--c2:#34e1ff">
+            <span class="svc__num">06</span>
+            <div class="svc__icon"><svg viewBox="0 0 24 24"><path d="M8 3 3 6l2 5 3-1v11h8V10l3 1 2-5-5-3c-1 2-2.5 3-4 3S9 5 8 3Z"/></svg></div>
+            <h3>Apparel &amp; Embroidery</h3>
+            <p>Custom clothing design and embroidery files built in Wilcom EMB Studio, plus product mockups.</p>
+            <ul class="tags"><li>Cloth Design</li><li>Embroidery</li><li>Mockups</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section class="section work" id="work">
+      <div class="container">
+        <div class="section__head section__head--row">
+          <div>
+            <p class="eyebrow" data-reveal><span class="bar"></span>Featured work</p>
+            <h2 class="h2" data-reveal>Designing impact through <em>meaningful</em> visuals.</h2>
+          </div>
+          <div class="filters" role="tablist" data-reveal>
+            <button class="filter active" data-filter="all">All</button>
+            <button class="filter" data-filter="branding">Branding</button>
+            <button class="filter" data-filter="print">Print</button>
+            <button class="filter" data-filter="3d">3D</button>
+            <button class="filter" data-filter="motion">Motion</button>
+            <button class="filter" data-filter="apparel">Apparel</button>
+          </div>
+        </div>
+
+        <!--
+          HOW TO ADD YOUR WORK:
+          Save images in assets/work/ with the names below (01.jpg, 02.jpg ...).
+          If an image is missing, a glowing placeholder is shown instead.
+        -->
+        <div class="work__grid" id="workGrid">
+          <figure class="card tilt" data-cat="branding" data-reveal data-desc="Complete logo system with business cards and branded stickers.">
+            <div class="card__media art-1"><img src="assets/work/01.jpg" alt="" loading="lazy" onerror="this.remove()" /><span class="card__glyph">Aa</span></div>
+            <figcaption><small>Branding</small><h3>Brand Identity System</h3><span class="card__go"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span></figcaption>
+          </figure>
+
+          <figure class="card card--tall tilt" data-cat="3d" data-reveal data-desc="Illuminated 3D signage with acrylic lettering and CNC-cut parts.">
+            <div class="card__media art-2"><img src="assets/work/02.jpg" alt="" loading="lazy" onerror="this.remove()" /><span class="card__glyph">3D</span></div>
+            <figcaption><small>3D · Signage</small><h3>3D Acrylic Signage</h3><span class="card__go"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span></figcaption>
+          </figure>
+
+          <figure class="card tilt" data-cat="print" data-reveal data-desc="Roll-up banner series designed for events and retail displays.">
+            <div class="card__media art-3"><img src="assets/work/03.jpg" alt="" loading="lazy" onerror="this.remove()" /><span class="card__glyph">▮</span></div>
+            <figcaption><small>Print</small><h3>Roll-Up Banner Series</h3><span class="card__go"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span></figcaption>
+          </figure>
+
+          <figure class="card tilt" data-cat="branding" data-reveal data-desc="Product advertising campaign for social media and print.">
+            <div class="card__media art-4"><img src="assets/work/04.jpg" alt="" loading="lazy" onerror="this.remove()" /><span class="card__glyph">Ad</span></div>
+            <figcaption><small>Branding · Social</small><h3>Product Ad Campaign</h3><span class="card__go"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span></figcaption>
+          </figure>
+
+          <figure class="card card--wide tilt" data-cat="print" data-reveal data-desc="Full vehicle sticker branding, from layout to installation-ready files.">
+            <div class="card__media art-5"><img src="assets/work/05.jpg" alt="" loading="lazy" onerror="this.remove()" /><span class="card__glyph">⟶</span></div>
+            <figcaption><small>Print · Vehicle</small><h3>Vehicle Branding Wrap</h3><span class="card__go"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span></figcaption>
+          </figure>
+
+          <figure class="card card--tall tilt" data-cat="apparel" data-reveal data-desc="Own clothing line designs with mockups and embroidery artwork.">
+            <div class="card__media art-6"><img src="assets/work/06.jpg" alt="" loading="lazy" onerror="this.remove()" /><span class="card__glyph">✦</span></div>
+            <figcaption><small>Apparel</small><h3>Streetwear Capsule</h3><span class="card__go"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span></figcaption>
+          </figure>
+
+          <figure class="card tilt" data-cat="3d" data-reveal data-desc="Photoreal 3D interior mockup modelled and rendered in Blender and SketchUp.">
+            <div class="card__media art-2"><img src="assets/work/07.jpg" alt="" loading="lazy" onerror="this.remove()" /><span class="card__glyph">⌂</span></div>
+            <figcaption><small>3D · Interior</small><h3>3D Interior Visualisation</h3><span class="card__go"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span></figcaption>
+          </figure>
+
+          <figure class="card tilt" data-cat="motion" data-reveal data-desc="Animated promo reel edited in Premiere Pro with After Effects motion graphics.">
+            <div class="card__media art-4"><img src="assets/work/08.jpg" alt="" loading="lazy" onerror="this.remove()" /><span class="card__glyph">▶</span></div>
+            <figcaption><small>Motion</small><h3>Motion Promo Reel</h3><span class="card__go"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span></figcaption>
+          </figure>
+
+          <figure class="card tilt" data-cat="apparel" data-reveal data-desc="Embroidery crest digitised in Wilcom EMB Studio.">
+            <div class="card__media art-1"><img src="assets/work/09.jpg" alt="" loading="lazy" onerror="this.remove()" /><span class="card__glyph">❖</span></div>
+            <figcaption><small>Apparel · Embroidery</small><h3>Embroidery Crest</h3><span class="card__go"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span></figcaption>
+          </figure>
+
+          <figure class="card card--wide tilt" data-cat="print" data-reveal data-desc="Decorative frosted and clear window film patterns, plotted for installation.">
+            <div class="card__media art-3"><img src="assets/work/10.jpg" alt="" loading="lazy" onerror="this.remove()" /><span class="card__glyph">▦</span></div>
+            <figcaption><small>Print · Window Film</small><h3>Frosted Film Patterns</h3><span class="card__go"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span></figcaption>
+          </figure>
+
+          <figure class="card tilt" data-cat="motion" data-reveal data-desc="Social media poster and reel kit for a consistent brand feed.">
+            <div class="card__media art-5"><img src="assets/work/11.jpg" alt="" loading="lazy" onerror="this.remove()" /><span class="card__glyph">#</span></div>
+            <figcaption><small>Social · Motion</small><h3>Social Media Kit</h3><span class="card__go"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span></figcaption>
+          </figure>
+
+          <figure class="card tilt" data-cat="branding" data-reveal data-desc="Tri-fold brochure design with layout, photo editing and print prep.">
+            <div class="card__media art-6"><img src="assets/work/12.jpg" alt="" loading="lazy" onerror="this.remove()" /><span class="card__glyph">≡</span></div>
+            <figcaption><small>Branding · Print</small><h3>Tri-fold Brochure</h3><span class="card__go"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ JOURNEY ============ -->
+    <section class="section journey" id="journey">
+      <div class="container">
+        <div class="section__head center">
+          <p class="eyebrow" data-reveal><span class="bar"></span>My journey<span class="bar"></span></p>
+          <h2 class="h2" data-reveal>A road paved in <em>pixels &amp; ink.</em></h2>
+        </div>
+
+        <ol class="timeline">
+          <li class="tl" data-reveal>
+            <span class="tl__node"></span>
+            <div class="tl__card glass">
+              <span class="tl__date">2025 — Present</span>
+              <h3>Inkfinity Advertising</h3>
+              <p class="tl__loc">Doha, Qatar</p>
+              <ul class="tags"><li>Brochure / Flyer</li><li>Banner</li><li>Roll Up</li><li>Business Cards</li><li>Branding Stickers</li><li>Product Ads</li><li>3D Signage</li><li>Acrylic Works</li><li>CNC Works</li><li>Printing Machine Operating</li></ul>
+            </div>
+          </li>
+          <li class="tl" data-reveal>
+            <span class="tl__node"></span>
+            <div class="tl__card glass">
+              <span class="tl__date">2022 — 2025 · 3 Years</span>
+              <h3>Zbox Studio</h3>
+              <p class="tl__loc">Designer &amp; team lead</p>
+              <ul class="tags"><li>Custom Design</li><li>Own Cloth Design</li><li>Embroidery Design</li><li>Managing Team</li><li>3D Model Creation</li><li>3D Interior Mockups</li><li>Technical Drawing</li><li>Video Editing</li><li>Photo Editing</li><li>Social Media Posters</li></ul>
+            </div>
+          </li>
+          <li class="tl" data-reveal>
+            <span class="tl__node"></span>
+            <div class="tl__card glass">
+              <span class="tl__date">2021 · 1 Year</span>
+              <h3>Exodus Window Film</h3>
+              <p class="tl__loc">Pattern &amp; film design</p>
+              <ul class="tags"><li>Pattern Design</li><li>Clear Film Designs</li><li>Frosted Film Plotting</li><li>Social Media Ads</li><li>3D Model Creation</li><li>3D Interior Mockups</li><li>Video Animation</li><li>Video Editing</li></ul>
+            </div>
+          </li>
+          <li class="tl" data-reveal>
+            <span class="tl__node"></span>
+            <div class="tl__card glass">
+              <span class="tl__date">2019 · 2 Years</span>
+              <h3>Baron Printing Press</h3>
+              <p class="tl__loc">Print designer</p>
+              <ul class="tags"><li>Logo</li><li>Brochure</li><li>Flyer</li><li>Banner</li><li>Roll Up</li><li>Vehicle Stickers</li><li>Product Ads</li><li>Branding Stickers</li><li>Mockups</li></ul>
+            </div>
+          </li>
+          <li class="tl" data-reveal>
+            <span class="tl__node"></span>
+            <div class="tl__card glass">
+              <span class="tl__date">Where it began</span>
+              <h3>Digital Printing Press</h3>
+              <p class="tl__loc">Sri Lanka</p>
+              <ul class="tags"><li>Logo</li><li>Flyer</li><li>Banner</li><li>Business Cards</li><li>Social Media Posters</li><li>Mockups</li><li>Photo Editing</li><li>Video Editing</li></ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ TOOLS ============ -->
+    <section class="section tools" id="tools">
+      <div class="container tools__grid">
+        <div>
+          <p class="eyebrow" data-reveal><span class="bar"></span>Toolkit</p>
+          <h2 class="h2" data-reveal>The tools I <em>create</em> with.</h2>
+          <p class="lead" data-reveal>From vector to voxel — a full creative pipeline for design, 3D, video and production.</p>
+
+          <div class="skills" data-reveal>
+            <h3>Other skills</h3>
+            <ul class="tags tags--lg">
+              <li>Troubleshooting</li><li>PC Hardware Management</li><li>Website Development</li><li>SQL Database</li><li>Microsoft Office</li><li>Wilcom EMB Studio</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="orbit" data-reveal aria-label="Design tools">
+          <div class="orbit__core"><span>Fahath</span><small>Toolkit</small></div>
+          <div class="orbit__ring">
+            <div class="tool" style="--i:0;--c:#ff9a00"><b>Ai</b><small>Illustrator</small></div>
+            <div class="tool" style="--i:1;--c:#31a8ff"><b>Ps</b><small>Photoshop</small></div>
+            <div class="tool" style="--i:2;--c:#74b9ff"><b>Lr</b><small>Lightroom</small></div>
+            <div class="tool" style="--i:3;--c:#9999ff"><b>Pr</b><small>Premiere</small></div>
+            <div class="tool" style="--i:4;--c:#cf96fd"><b>Ae</b><small>After Effects</small></div>
+            <div class="tool" style="--i:5;--c:#f5792a"><b>Bl</b><small>Blender</small></div>
+            <div class="tool" style="--i:6;--c:#e72b2d"><b>Su</b><small>SketchUp</small></div>
+            <div class="tool" style="--i:7;--c:#e51050"><b>Ac</b><small>AutoCAD</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <div class="container contact__grid">
+        <div class="contact__intro">
+          <p class="eyebrow" data-reveal><span class="bar"></span>Have a project in mind?</p>
+          <h2 class="h2 h2--xl" data-reveal>Let's build something <em>meaningful</em> together.</h2>
+
+          <ul class="contact__list" data-reveal>
+            <li><a href="mailto:fahathrichvi7@gmail.com"><span class="ci"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>fahathrichvi7@gmail.com</a></li>
+            <li><a href="tel:+97430323192"><span class="ci"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></span>+974 3032 3192</a></li>
+            <li><a href="https://wa.me/97430323192" target="_blank" rel="noopener"><span class="ci"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-4.8A8.5 8.5 0 1 1 8 19.6L3 21Z"/></svg></span>Chat on WhatsApp</a></li>
+            <li><span><span class="ci"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>Doha, Qatar · from Sri Lanka</span></li>
+          </ul>
+        </div>
+
+        <form class="contact__form glass" id="contactForm" data-reveal>
+          <div class="field-row">
+            <label class="field"><input type="text" name="name" required placeholder=" " /><span>Your name</span></label>
+            <label class="field"><input type="email" name="email" required placeholder=" " /><span>Your email</span></label>
+          </div>
+          <label class="field">
+            <select name="service">
+              <option>Brand Identity</option>
+              <option>Print &amp; Large Format</option>
+              <option>3D Signage &amp; Fabrication</option>
+              <option>3D Modelling &amp; Interiors</option>
+              <option>Motion &amp; Video</option>
+              <option>Apparel &amp; Embroidery</option>
+              <option>Something else</option>
+            </select>
+            <span class="fixed">What do you need?</span>
+          </label>
+          <label class="field"><textarea name="message" rows="5" required placeholder=" "></textarea><span>Tell me about your project</span></label>
+          <button type="submit" class="btn btn--primary btn--full magnetic">Send Message
+            <svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></svg>
+          </button>
+          <p class="form-note" id="formNote">Opens your email app with the message ready to send.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#home" class="nav__logo"><span class="logo-text">FAHATH<small>Designing the future, one visual at a time.</small></span></a>
+      <nav class="footer__links">
+        <a href="#about">About</a><a href="#services">Services</a><a href="#work">Work</a><a href="#journey">Journey</a><a href="#contact">Contact</a>
+      </nav>
+      <p class="footer__copy">© <span id="year"></span> Fahath. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ============ LIGHTBOX ============ -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" id="lbClose" aria-label="Close">×</button>
+    <div class="lightbox__body glass">
+      <div class="lightbox__media" id="lbMedia"></div>
+      <div class="lightbox__info">
+        <small id="lbCat"></small>
+        <h3 id="lbTitle"></h3>
+        <p id="lbDesc"></p>
+        <a href="#contact" class="btn btn--primary" id="lbCta">Start a similar project</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/scene.js"></script>
+</body>
+</html>
