@@ -492,7 +492,7 @@ main, .footer, .nav { position: relative; z-index: 3; }
 .footer__links { display: flex; gap: 22px; flex-wrap: wrap; }
 .footer__links a { font-size: 13px; color: var(--muted); transition: color .3s; }
 .footer__links a:hover { color: var(--gold); }
-.footer__copy { font-size: 12px; color: var(--dim); }
+.footer__copy { font-size: 12px; color: var(--dim); text-align: right; line-height: 1.7; }
 
 /* ---------- Lightbox ---------- */
 .lightbox { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 16px; background: rgba(2, 3, 8, .82); backdrop-filter: blur(10px); opacity: 0; visibility: hidden; transition: opacity .5s var(--ease), visibility .5s; }
