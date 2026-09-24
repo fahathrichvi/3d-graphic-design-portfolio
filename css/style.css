@@ -309,7 +309,8 @@ main, .footer, .nav { position: relative; z-index: 3; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ---------- About ---------- */
-.about__grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 6vw, 90px); align-items: center; }
+.about__grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(40px, 6vw, 90px); align-items: center; }
+.about__visual { order: 2; }
 .portrait { position: relative; width: min(420px, 100%); aspect-ratio: 1; margin-inline: auto; }
 .portrait__ring { position: absolute; border-radius: 50%; }
 .pr-1 { inset: 0; border: 1px solid rgba(255, 201, 120, .35); animation: spin 30s linear infinite; }
@@ -324,7 +325,7 @@ main, .footer, .nav { position: relative; z-index: 3; }
   display: grid; place-items: center;
   box-shadow: inset 0 0 60px rgba(0, 0, 0, .6);
 }
-.portrait__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+.portrait__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; z-index: 1; }
 .portrait__fallback { font-family: var(--f-display); font-weight: 800; font-size: clamp(90px, 14vw, 150px); background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .portrait__chip { position: absolute; padding: 9px 16px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: .08em; animation: bob 6s ease-in-out infinite; }
 .chip-a { top: 6%; right: -2%; }
@@ -528,6 +529,7 @@ main, .footer, .nav { position: relative; z-index: 3; }
   .nav { background: rgba(8, 10, 22, .6); border-color: var(--line); backdrop-filter: blur(18px); }
 
   .hero__grid, .about__grid, .tools__grid, .contact__grid { grid-template-columns: 1fr; }
+  .about__visual { order: 0; }
   .hero__cards { height: auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .float-card { position: relative; inset: auto; min-width: 0; animation: none; }
   .fc-3 { grid-column: span 2; }
